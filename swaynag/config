@@ -1,0 +1,12 @@
+[warning]
+font=JetBrains Mono Nerd Font 12
+background=32363E
+text=ABB2BF
+border-bottom-size=1
+border-bottom=E06C75
+button-background=E06C75
+button-text=282C34
+border=32363E
+button-gap=2
+button-margin-right=5
+button-dismiss-gap=10
