@@ -1,0 +1,160 @@
+{
+  "custom/launcher": {
+    "format": " ",
+    "tooltip": true,
+    "tooltip-format": "Application Launcher",
+    "on-click": "killall rofi 2>/dev/null || rofi -show drun -disable-history -config ~/.config/rofi/menu.rasi",
+    "on-click-right": "killall rofi 2>/dev/null || rofi -show drun"
+  },
+  
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 22,
+    "icon-theme": "Numix-Circle",
+    "tooltip-format": "{title:.50}",
+    "on-click": "minimize-raise",
+    "on-click-middle": "close",
+    "on-click-right": "fullscreen",
+  },
+  
+  "clock": {
+    "format-alt": "{:%A,%e %b %Y}",
+    "format": "{:%I:%M %p}",
+    "tooltip-format": "<span>{calendar}</span>",
+    "calendar": {
+      "format": {
+        "months": "<span color='#abb2bf'><b>{}</b></span>",
+        "days": "<span color='#abb2bf'><b>{}</b></span>",
+        "weekdays": "<span color='#98c379'><b>{}</b></span>",
+        "today": "<span color='#c678dd'><b>{}</b></span>"
+      }
+    }
+  },
+  
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+       "notification": "<U+F0A2><span foreground='red'><sup><U+F444></sup></span>",
+       "none": "<U+F0A2>",
+       "dnd-notification": "<U+F1F7><span foreground='red'><sup><U+F444></sup></span>",
+       "dnd-none": "<U+F1F7>",
+       "inhibited-notification": "<U+F0A2><span foreground='red'><sup><U+F444></sup></span>",
+       "inhibited-none": "<U+F0A2>",
+       "dnd-inhibited-notification": "<U+F1F7><span foreground='red'><sup><U+F444></sup></span>",
+       "dnd-inhibited-none": "<U+F1F7>"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+},
+  
+  "group/group-pulseaudio":{
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "pulseaudio-group",
+      "transition-left-to-right": false,
+    },
+    "modules": ["pulseaudio#output", "pulseaudio#input"],
+  },
+  
+  "pulseaudio#input": {
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": " ",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-middle": "pavucontrol",
+    "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1% ",
+    "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%",
+    "tooltip": false
+  },
+  
+  "pulseaudio#output": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁",
+    "format-icons": {
+      "headphone": "",
+      "default": ["", "", ""],
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-middle": "pavucontrol",
+    "tooltip": false
+  },
+  
+  "backlight": {
+    "device": "acpi_video0",
+    "tooltip": false,
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "on-scroll-up": "brightnessctl s +4%",
+    "on-scroll-down": "brightnessctl s 4%-",
+  },
+  
+  "tray": {
+    "icon-size": 20,
+    "spacing": 10,
+    "icons": {
+    }
+  },
+  
+  "temperature": {
+    "critical-threshold": 40,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["", "", "", ""],
+  },
+  
+  "battery": {
+    "states": {
+      "good": 90,
+      "warning": 40,
+      "critical": 20,
+    },
+    "format": "{icon} {capacity}%",
+    "format-full": "{icon} {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+  },
+  
+  "group/group-power": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false,
+    },
+    "modules": ["custom/power", "custom/quit", "custom/lock", "custom/reboot"],
+  },
+
+  "custom/quit": {
+    "format": "󰗼",
+    "tooltip": true,
+    "tooltip-format": "Logout",
+    "on-click": "swaynag -t warning -m \"Logout and exit sway?\" -B \"Logout\" \"swaymsg exit\" -s \"Cancel\""
+  },
+
+  "custom/lock": {
+    "format": "󰍁",
+    "tooltip": true,
+    "tooltip-format": "Lock",
+    "on-click": "swaynag -t warning -m \"Lock the screen?\" -B \"Lock\" \"swaylock\" -s \"Cancel\""
+  },
+
+  "custom/reboot": {
+    "format": "󰜉",
+    "tooltip": true,
+    "tooltip-format": "Reboot",
+    "on-click": "swaynag -t warning -m \"Reboot the system?\" -B \"Reboot\" \"systemctl reboot\" -s \"Cancel\""
+  },
+
+  "custom/power": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "Shutdown",
+    "on-click": "swaynag -t warning -m \"Shutdown the system?\" -B \"Shutdown\" \"systemctl poweroff\" -s \"Cancel\""
+  },
+}

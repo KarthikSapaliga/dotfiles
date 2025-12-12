@@ -1,0 +1,14 @@
+@define-color black         #282c34;
+@define-color red           #e06c75;
+@define-color green         #98c379;
+@define-color yellow        #e5c07b;
+@define-color blue          #61afef;
+@define-color purple        #c678dd;
+@define-color teal          #56b6c2;
+@define-color gray          #abb2bf;
+
+@define-color surface0      #282c34;
+@define-color surface1      #32363e;
+@define-color surface2      #5c6370;
+
+@define-color text          #abb2bf;

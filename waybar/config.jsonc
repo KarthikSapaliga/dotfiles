@@ -1,0 +1,27 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 36,
+  "spacing": 2,
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "reload_style_on_change": true,
+
+  "modules-left": [
+    "custom/launcher",
+    "sway/workspaces",
+  ],
+
+  "modules-center": ["clock","custom/notification"],
+
+  "modules-right": [
+    "group/group-tools",
+    "group/group-pulseaudio",
+    "backlight",
+    "tray",
+    "battery",
+    "group/group-power",
+  ],
+
+  "include": ["~/.config/waybar/modules.json"],
+}
